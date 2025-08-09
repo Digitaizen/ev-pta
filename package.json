@@ -1,0 +1,31 @@
+{
+  "name": "ev-pta-website",
+  "version": "1.0.0",
+  "description": "East View High School PTA Website - Georgetown, Texas",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "test": "cd frontend && npm test && cd ../backend && npm test"
+  },
+  "keywords": [
+    "pta",
+    "school",
+    "website",
+    "react",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "East View High School PTA",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
