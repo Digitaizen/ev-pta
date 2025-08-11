@@ -20,7 +20,7 @@ app.use(limiter);
 // CORS configuration
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
-    ? process.env.FRONTEND_URL
+    ? process.env.FRONTEND_URL.split(',').map(url => url.trim())
     : ['http://localhost:3000', 'http://localhost:3001'],
   credentials: true
 }));
