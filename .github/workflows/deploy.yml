@@ -1,0 +1,49 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json
+        
+    - name: Install dependencies
+      run: |
+        cd frontend
+        npm ci
+        
+    - name: Build
+      run: |
+        cd frontend
+        npm run build
+      env:
+        REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+        REACT_APP_STRIPE_PUBLISHABLE_KEY: ${{ secrets.REACT_APP_STRIPE_PUBLISHABLE_KEY }}
+        REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.REACT_APP_PAYPAL_CLIENT_ID }}
+        REACT_APP_GOOGLE_CALENDAR_API_KEY: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_API_KEY }}
+        REACT_APP_GOOGLE_CALENDAR_ID: ${{ secrets.REACT_APP_GOOGLE_CALENDAR_ID }}
+        REACT_APP_SITE_NAME: ${{ secrets.REACT_APP_SITE_NAME }}
+        REACT_APP_SITE_URL: ${{ secrets.REACT_APP_SITE_URL }}
+        REACT_APP_CONTACT_EMAIL: ${{ secrets.REACT_APP_CONTACT_EMAIL }}
+        REACT_APP_CONTACT_PHONE: ${{ secrets.REACT_APP_CONTACT_PHONE }}
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./frontend/build
