@@ -19,9 +19,9 @@ app.use(limiter);
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? process.env.FRONTEND_URL 
-    : 'http://localhost:3000',
+  origin: process.env.NODE_ENV === 'production'
+    ? process.env.FRONTEND_URL
+    : ['http://localhost:3000', 'http://localhost:3001'],
   credentials: true
 }));
 
@@ -42,6 +42,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/blog', require('./routes/blog'));
 app.use('/api/events', require('./routes/events'));
+app.use('/api/calendar', require('./routes/calendar'));
 app.use('/api/store', require('./routes/store'));
 app.use('/api/donations', require('./routes/donations'));
 app.use('/api/volunteers', require('./routes/volunteers'));

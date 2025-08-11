@@ -16,14 +16,14 @@ const Footer = () => {
             <div className="contact-info">
               <div className="contact-item">
                 <FaEnvelope className="contact-icon" />
-                <a href="mailto:info@eastviewpta.org" className="contact-link">
-                  info@eastviewpta.org
+                <a href="mailto:ptaeastview@gmail.com" className="contact-link">
+                  ptaeastview@gmail.com
                 </a>
               </div>
               <div className="contact-item">
                 <FaPhone className="contact-icon" />
-                <a href="tel:+15125550123" className="contact-link">
-                  (512) 555-0123
+                <a href="tel:+15124171329" className="contact-link">
+                  (512) 417-1329
                 </a>
               </div>
               <div className="contact-item">
@@ -78,7 +78,7 @@ const Footer = () => {
               </p>
               <div className="school-links">
                 <a 
-                  href="https://eastview.georgetownisd.org" 
+                  href="https://evhs.georgetownisd.org/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="school-link"
@@ -86,7 +86,7 @@ const Footer = () => {
                   School Website
                 </a>
                 <a 
-                  href="https://www.georgetownisd.org" 
+                  href="https://www.georgetownisd.org/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="school-link"
@@ -103,7 +103,7 @@ const Footer = () => {
             <div className="social-section">
               <div className="social-links">
                 <a 
-                  href="https://facebook.com/eastviewpta" 
+                  href="https://www.facebook.com/profile.php?id=61578221830917" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="social-link"
@@ -111,7 +111,7 @@ const Footer = () => {
                 >
                   <FaFacebook />
                 </a>
-                <a 
+                {/* <a 
                   href="https://twitter.com/eastviewpta" 
                   target="_blank" 
                   rel="noopener noreferrer"
@@ -119,9 +119,9 @@ const Footer = () => {
                   aria-label="Twitter"
                 >
                   <FaTwitter />
-                </a>
+                </a> */}
                 <a 
-                  href="https://instagram.com/eastviewpta" 
+                  href="https://www.instagram.com/ev_pta/profilecard/?igsh=dnAyNWp2dW95ajF4" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="social-link"

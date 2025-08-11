@@ -211,6 +211,10 @@
   gap: var(--spacing-sm);
 }
 
+.auth-buttons .btn {
+  white-space: nowrap;
+}
+
 .btn-sm {
   padding: var(--spacing-xs) var(--spacing-md);
   font-size: 0.875rem;

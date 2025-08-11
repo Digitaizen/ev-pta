@@ -30,9 +30,9 @@ const Header = () => {
           <div className="header-brand">
             <Link to="/" className="brand-link" onClick={closeMenu}>
               <div className="logo-container">
-                <img 
-                  src="/images/ev-logo.png" 
-                  alt="East View High School" 
+                <img
+                  src="/ev_pta_logo_1024.png"
+                  alt="East View High School PTA"
                   className="school-logo"
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -95,6 +95,11 @@ const Header = () => {
               <li className="nav-item">
                 <Link to="/blog" className="nav-link" onClick={closeMenu}>
                   News
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/calendar" className="nav-link" onClick={closeMenu}>
+                  Calendar
                 </Link>
               </li>
               <li className="nav-item dropdown">

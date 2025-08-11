@@ -37,22 +37,10 @@ const Membership = () => {
         <div className="membership-types">
           <h2>Membership Options</h2>
           <div className="membership-cards">
-            <div className="membership-card">
-              <h3>Individual</h3>
-              <div className="price">$15</div>
-              <p>Single parent/guardian membership</p>
-              <Link to="/register" className="btn btn-primary">Join Now</Link>
-            </div>
             <div className="membership-card featured">
-              <h3>Family</h3>
-              <div className="price">$25</div>
-              <p>Household membership for all family members</p>
-              <Link to="/register" className="btn btn-primary">Join Now</Link>
-            </div>
-            <div className="membership-card">
-              <h3>Business</h3>
-              <div className="price">$100</div>
-              <p>Business supporter membership with recognition</p>
+              <h3>Individual</h3>
+              <div className="price">$10</div>
+              <p>Single parent/guardian/student membership</p>
               <Link to="/register" className="btn btn-primary">Join Now</Link>
             </div>
           </div>

@@ -12,6 +12,7 @@ import Blog from './pages/Blog';
 import CommunityPartners from './pages/CommunityPartners';
 import Scholarships from './pages/Scholarships';
 import Volunteers from './pages/Volunteers';
+import Calendar from './pages/Calendar';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -43,6 +44,7 @@ function App() {
               <Route path="/community-partners" element={<CommunityPartners />} />
               <Route path="/scholarships" element={<Scholarships />} />
               <Route path="/volunteers" element={<Volunteers />} />
+              <Route path="/calendar" element={<Calendar />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route

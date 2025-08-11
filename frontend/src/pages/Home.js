@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaCalendarAlt, FaUsers, FaHeart, FaGraduationCap } from 'react-icons/fa';
+import UpcomingEvents from '../components/UpcomingEvents';
 
 const Home = () => {
   return (
@@ -73,23 +74,33 @@ const Home = () => {
             <div className="col-8">
               <h2>Latest Announcements</h2>
               <div className="announcements-list">
-                <div className="announcement-card">
-                  <div className="announcement-date">Feb 15, 2024</div>
+                {/* <div className="announcement-card">
+                  <div className="announcement-date">Aug 10, 2025</div>
                   <h3 className="announcement-title">Spring Fundraiser Coming Soon!</h3>
                   <p className="announcement-content">
                     Join us for our annual spring fundraiser on March 15th. Help us raise funds 
                     for new technology and student programs.
                   </p>
                   <Link to="/blog" className="announcement-link">Read More</Link>
-                </div>
+                </div> */}
                 <div className="announcement-card">
-                  <div className="announcement-date">Feb 10, 2024</div>
+                  <div className="announcement-date">Aug 10, 2025</div>
                   <h3 className="announcement-title">New Member Meeting</h3>
                   <p className="announcement-content">
-                    New member orientation meeting scheduled for February 20th at 7 PM in the 
-                    school library. Light refreshments will be provided.
+                    Anyone interested in the school and students is welcome to attend and join.
+                    <br />
+                      Join the EVHS PTA!
+                      <br />
+                      Attention all parents and Teachers. We are starting a PTA at EVHS!
+                      <br />
+                      A meeting to organize our PTA will be held virtually on Monday August 11th at 6pm.
+                      Please use this link to attend:
+                      <br />
+                      <a href="https://us06web.zoom.us/j/84487754793?pwd=i9dHgkcZ3xH1dtb9CIt34Bkbpf4D6m.1" target="_blank" rel="noreferrer">
+                          Join Zoom Meeting
+                      </a>
                   </p>
-                  <Link to="/blog" className="announcement-link">Read More</Link>
+                  {/* <Link to="/blog" className="announcement-link">Read More</Link> */}
                 </div>
               </div>
               <div className="text-center mt-4">
@@ -150,15 +161,7 @@ const Home = () => {
       <section className="calendar-section">
         <div className="container">
           <h2 className="text-center mb-4">Upcoming Events</h2>
-          <div className="calendar-placeholder">
-            <p className="text-center">
-              Calendar integration will be implemented here.
-              <br />
-              <Link to="/events" className="btn btn-primary mt-3">
-                View All Events
-              </Link>
-            </p>
-          </div>
+          <UpcomingEvents limit={3} showViewAll={true} />
         </div>
       </section>
 
@@ -169,21 +172,21 @@ const Home = () => {
             <div className="col-6">
               <h2>Get In Touch</h2>
               <div className="contact-info">
-                <p><strong>Email:</strong> info@eastviewpta.org</p>
-                <p><strong>Phone:</strong> (512) 555-0123</p>
+                <p><strong>Email:</strong> ptaeastview@gmail.com</p>
+                <p><strong>Phone:</strong> (512) 417-1329</p>
                 <p><strong>Address:</strong> 4490 E University Ave, Georgetown, TX 78626</p>
               </div>
             </div>
             <div className="col-6">
               <h2>Follow Us</h2>
               <div className="social-links">
-                <a href="https://facebook.com/eastviewpta" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/profile.php?id=61578221830917" target="_blank" rel="noopener noreferrer">
                   Facebook
                 </a>
-                <a href="https://twitter.com/eastviewpta" target="_blank" rel="noopener noreferrer">
+                {/* <a href="https://twitter.com/eastviewpta" target="_blank" rel="noopener noreferrer">
                   Twitter
-                </a>
-                <a href="https://instagram.com/eastviewpta" target="_blank" rel="noopener noreferrer">
+                </a> */}
+                <a href="https://www.instagram.com/ev_pta/profilecard/?igsh=dnAyNWp2dW95ajF4" target="_blank" rel="noopener noreferrer">
                   Instagram
                 </a>
               </div>
