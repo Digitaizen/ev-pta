@@ -31,7 +31,7 @@ const Header = () => {
             <Link to="/" className="brand-link" onClick={closeMenu}>
               <div className="logo-container">
                 <img
-                  src="/ev_pta_logo_1024.png"
+                  src="/ev-pta/ev_pta_logo_1024.png"
                   alt="East View High School PTA"
                   className="school-logo"
                   onError={(e) => {
