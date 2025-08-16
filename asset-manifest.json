@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/ev-pta/static/css/main.7b3cffd1.css",
-    "main.js": "/ev-pta/static/js/main.0520dd9e.js",
-    "static/js/206.e122a71d.chunk.js": "/ev-pta/static/js/206.e122a71d.chunk.js",
-    "index.html": "/ev-pta/index.html"
+    "main.css": "./static/css/main.1aef08eb.css",
+    "main.js": "./static/js/main.6eb7c0a4.js",
+    "static/js/206.e122a71d.chunk.js": "./static/js/206.e122a71d.chunk.js",
+    "index.html": "./index.html"
   },
   "entrypoints": [
-    "static/css/main.7b3cffd1.css",
-    "static/js/main.0520dd9e.js"
+    "static/css/main.1aef08eb.css",
+    "static/js/main.6eb7c0a4.js"
   ]
 }
