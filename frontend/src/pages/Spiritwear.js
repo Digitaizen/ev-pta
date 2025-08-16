@@ -6,7 +6,7 @@ const Spiritwear = () => {
       <div className="container">
         <div className="page-header">
           <h1>East View Spiritwear</h1>
-          <p className="page-subtitle">
+          <p className="page-description">
             Show your Patriot pride with official East View High School merchandise
           </p>
         </div>

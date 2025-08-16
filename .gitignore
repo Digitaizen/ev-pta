@@ -103,9 +103,6 @@ Thumbs.db
 uploads/
 public/uploads/
 
-# Vercel
-.vercel
-
 # Local development
 .env.development
 .env.production

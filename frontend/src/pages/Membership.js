@@ -7,7 +7,7 @@ const Membership = () => {
       <div className="container">
         <div className="page-header">
           <h1>Join the East View PTA</h1>
-          <p className="page-subtitle">
+          <p className="page-description">
             Become part of our community and help support our students and teachers
           </p>
         </div>
@@ -41,7 +41,7 @@ const Membership = () => {
               <h3>Individual</h3>
               <div className="price">$10</div>
               <p>Single parent/guardian/student membership</p>
-              <Link to="/register" className="btn btn-primary">Join Now</Link>
+              <a href="https://www.joinpta.org/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Join Now</a>
             </div>
           </div>
         </div>

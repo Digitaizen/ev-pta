@@ -14,21 +14,92 @@ const Calendar = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/calendar/events?days=30`);
-      const data = await response.json();
+      setError(null);
+      console.log('Starting to fetch calendar events...');
 
-      if (data.success) {
-        setEvents(data.events);
-      } else {
-        setError('Failed to fetch calendar events');
+      // Fetch directly from Google Calendar API
+      try {
+        const calendarId = process.env.REACT_APP_GOOGLE_CALENDAR_ID || 'ptaeastview@gmail.com';
+        const apiKey = process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY;
+        console.log('Trying Google Calendar API with key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'Missing');
+        console.log('Calendar ID:', calendarId);
+
+        if (apiKey) {
+          // Use Google Calendar API directly from frontend for public calendars
+          // Get events from yesterday to 90 days in the future to catch events that might be today
+          const timeMin = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(); // Start from yesterday
+          const timeMax = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(); // 90 days from now
+
+          const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?key=${apiKey}&timeMin=${timeMin}&timeMax=${timeMax}&singleEvents=true&orderBy=startTime&maxResults=50`;
+          console.log('Google Calendar API URL (without key):', url.replace(apiKey, 'API_KEY_HIDDEN'));
+
+          const response = await fetch(url);
+          console.log('Google Calendar response status:', response.status);
+          console.log('Google Calendar response headers:', Object.fromEntries(response.headers.entries()));
+
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Google Calendar API error response:', errorText);
+
+            // Try to parse error details
+            try {
+              const errorData = JSON.parse(errorText);
+              console.error('Parsed error data:', errorData);
+              if (errorData.error && errorData.error.message) {
+                throw new Error(`Google Calendar API error: ${errorData.error.message}`);
+              }
+            } catch (parseError) {
+              // If we can't parse the error, use the raw text
+            }
+
+            throw new Error(`Google Calendar API error! status: ${response.status}, response: ${errorText}`);
+          }
+
+          const data = await response.json();
+          console.log('Google Calendar response data:', data);
+
+          if (data.items) {
+            const formattedEvents = data.items.map(event => ({
+              id: event.id,
+              title: event.summary,
+              description: event.description || '',
+              start: event.start.dateTime || event.start.date,
+              end: event.end.dateTime || event.end.date,
+              location: event.location || '',
+              htmlLink: event.htmlLink
+            }));
+
+            console.log('Successfully loaded events from Google Calendar:', formattedEvents.length);
+            setEvents(formattedEvents);
+            return;
+          } else {
+            console.log('Google Calendar returned no events in the specified time range');
+            console.log('Time range:', { timeMin, timeMax });
+          }
+        } else {
+          console.warn('Google Calendar API key not found in environment variables');
+        }
+      } catch (googleError) {
+        console.error('Google Calendar direct API failed:', googleError);
+        console.error('Error details:', {
+          message: googleError.message,
+          stack: googleError.stack
+        });
       }
+
+      // If we get here, no events were found
+      console.warn('No calendar events found from Google Calendar API');
+      setEvents([]);
+
     } catch (err) {
-      setError('Error connecting to calendar service');
-      console.error('Calendar fetch error:', err);
+      console.error('Critical error in fetchEvents:', err);
+      setError('Failed to load calendar events');
     } finally {
       setLoading(false);
     }
   };
+
+
 
 
 
@@ -42,9 +113,12 @@ const Calendar = () => {
   };
 
   const getUpcomingEvents = () => {
-    const now = new Date();
+    // Get events from the start of today onwards
+    const startOfToday = new Date();
+    startOfToday.setHours(0, 0, 0, 0);
+
     return events
-      .filter(event => new Date(event.start) >= now)
+      .filter(event => new Date(event.start) >= startOfToday)
       .sort((a, b) => new Date(a.start) - new Date(b.start))
       .slice(0, 5);
   };
@@ -104,7 +178,6 @@ const Calendar = () => {
                     <h4 className="event-title">{event.title}</h4>
                     <p className="event-time">
                       {formatTime(event.start)}
-                      {event.end && ` - ${formatTime(event.end)}`}
                     </p>
                     {event.location && (
                       <p className="event-location">📍 {event.location}</p>
@@ -118,9 +191,9 @@ const Calendar = () => {
                   </div>
                   {event.htmlLink && (
                     <div className="event-actions">
-                      <a 
-                        href={event.htmlLink} 
-                        target="_blank" 
+                      <a
+                        href={event.htmlLink}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="view-in-google-btn"
                       >
@@ -146,10 +219,10 @@ const Calendar = () => {
               <span className="stat-label">Upcoming</span>
             </div>
           </div>
-          
+
           <div className="calendar-note">
             <p>
-              <strong>Note:</strong> This calendar shows PTA events and meetings. 
+              <strong>Note:</strong> This calendar shows PTA events and meetings.
               For the most up-to-date information, please check our Google Calendar directly.
             </p>
           </div>

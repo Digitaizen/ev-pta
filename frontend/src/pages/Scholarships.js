@@ -6,7 +6,7 @@ const Scholarships = () => {
       <div className="container">
         <div className="page-header">
           <h1>PTA Scholarships</h1>
-          <p className="page-subtitle">
+          <p className="page-description">
             Supporting East View graduates in their pursuit of higher education
           </p>
         </div>

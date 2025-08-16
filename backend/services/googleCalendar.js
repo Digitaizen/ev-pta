@@ -10,23 +10,33 @@ class GoogleCalendarService {
 
   initializeCalendar() {
     try {
-      // Load service account credentials
-      const keyFilePath = path.join(__dirname, '../config/google-service-account.json');
-      const auth = new google.auth.GoogleAuth({
-        keyFile: keyFilePath,
-        scopes: ['https://www.googleapis.com/auth/calendar']
-      });
+      // Use API key for public calendar access
+      const apiKey = process.env.GOOGLE_CALENDAR_API_KEY;
 
-      this.calendar = google.calendar({ version: 'v3', auth });
-      console.log('Google Calendar service initialized successfully');
+      if (!apiKey) {
+        console.warn('Google Calendar API key not configured, calendar features will be disabled');
+        return;
+      }
+
+      this.calendar = google.calendar({
+        version: 'v3',
+        auth: apiKey
+      });
+      console.log('Google Calendar service initialized successfully with API key');
     } catch (error) {
       console.error('Failed to initialize Google Calendar service:', error);
-      throw error;
+      // Don't throw error, just log it so the app can still function
+      console.warn('Calendar features will be disabled');
     }
   }
 
   async listEvents(options = {}) {
     try {
+      if (!this.calendar) {
+        console.warn('Google Calendar not initialized, returning empty events list');
+        return [];
+      }
+
       const {
         timeMin = new Date().toISOString(),
         timeMax,
@@ -51,8 +61,20 @@ class GoogleCalendarService {
       return response.data.items || [];
     } catch (error) {
       console.error('Error fetching calendar events:', error.message);
+      console.error('Error details:', error);
       console.error('Calendar ID used:', this.calendarId);
-      throw new Error('Failed to fetch calendar events: ' + error.message);
+      console.error('API Key configured:', !!process.env.GOOGLE_CALENDAR_API_KEY);
+
+      // More specific error handling
+      if (error.code === 404) {
+        throw new Error('Calendar not found. Please check the calendar ID and ensure it is public.');
+      } else if (error.code === 403) {
+        throw new Error('Access denied. Please check API key permissions and calendar visibility.');
+      } else if (error.code === 400) {
+        throw new Error('Bad request. Please check the calendar ID format.');
+      } else {
+        throw new Error('Failed to fetch calendar events: ' + error.message);
+      }
     }
   }
 

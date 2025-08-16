@@ -6,7 +6,7 @@ const Volunteers = () => {
       <div className="container">
         <div className="page-header">
           <h1>Volunteer Opportunities</h1>
-          <p className="page-subtitle">
+          <p className="page-description">
             Get involved and make a difference in our school community
           </p>
         </div>

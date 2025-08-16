@@ -28,6 +28,13 @@ router.get('/events', validateDateRange, async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
 
+    console.log('Calendar API request received');
+    console.log('Environment check:', {
+      hasApiKey: !!process.env.GOOGLE_CALENDAR_API_KEY,
+      calendarId: process.env.GOOGLE_CALENDAR_ID,
+      nodeEnv: process.env.NODE_ENV
+    });
+
     const { startDate, endDate, days } = req.query;
     let events;
 
@@ -63,10 +70,21 @@ router.get('/events', validateDateRange, async (req, res) => {
     });
   } catch (error) {
     console.error('Error fetching calendar events:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      status: error.status,
+      stack: error.stack
+    });
+
     res.status(500).json({
       success: false,
       message: 'Failed to fetch calendar events',
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      error: error.message,
+      details: process.env.NODE_ENV === 'development' ? {
+        code: error.code,
+        status: error.status
+      } : undefined
     });
   }
 });
@@ -197,6 +215,67 @@ router.delete('/events/:id', auth, async (req, res) => {
       success: false,
       message: 'Failed to delete calendar event',
       error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
+  }
+});
+
+// GET /api/calendar/test - Test calendar configuration
+router.get('/test', async (req, res) => {
+  try {
+    const { google } = require('googleapis');
+
+    const apiKey = process.env.GOOGLE_CALENDAR_API_KEY;
+    const calendarId = process.env.GOOGLE_CALENDAR_ID;
+
+    if (!apiKey) {
+      return res.json({
+        success: false,
+        message: 'Google Calendar API key not configured',
+        config: {
+          hasApiKey: false,
+          calendarId: calendarId || 'not set'
+        }
+      });
+    }
+
+    // Test with a simple calendar list request first
+    const calendar = google.calendar({ version: 'v3', auth: apiKey });
+
+    // Try to get calendar metadata
+    try {
+      const calendarInfo = await calendar.calendars.get({
+        calendarId: calendarId
+      });
+
+      res.json({
+        success: true,
+        message: 'Calendar configuration test successful',
+        config: {
+          hasApiKey: true,
+          calendarId: calendarId,
+          calendarName: calendarInfo.data.summary,
+          calendarDescription: calendarInfo.data.description,
+          timeZone: calendarInfo.data.timeZone
+        }
+      });
+    } catch (calendarError) {
+      res.json({
+        success: false,
+        message: 'Calendar access test failed',
+        error: calendarError.message,
+        config: {
+          hasApiKey: true,
+          calendarId: calendarId,
+          errorCode: calendarError.code,
+          errorStatus: calendarError.status
+        }
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Calendar test failed',
+      error: error.message
     });
   }
 });

@@ -31,10 +31,11 @@ const Header = () => {
             <Link to="/" className="brand-link" onClick={closeMenu}>
               <div className="logo-container">
                 <img
-                  src="/ev-pta/ev_pta_logo_1024.png"
+                  src={`${process.env.PUBLIC_URL}/ev_pta_logo_1024.png`}
                   alt="East View High School PTA"
                   className="school-logo"
                   onError={(e) => {
+                    console.log('Logo failed to load:', e.target.src);
                     e.target.style.display = 'none';
                   }}
                 />
@@ -148,9 +149,9 @@ const Header = () => {
                   <Link to="/login" className="btn btn-outline btn-sm" onClick={closeMenu}>
                     Login
                   </Link>
-                  <Link to="/register" className="btn btn-primary btn-sm" onClick={closeMenu}>
+                  <a href="https://www.joinpta.org/" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm" onClick={closeMenu}>
                     Join PTA
-                  </Link>
+                  </a>
                 </div>
               )}
             </div>

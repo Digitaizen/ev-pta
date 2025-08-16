@@ -108,9 +108,9 @@ npm run build
 
 ## Deployment
 
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Set environment variables in Vercel dashboard
+### Firebase (Recommended)
+1. Connect your GitHub repository to Firebase
+2. Set environment variables in Firebase console
 3. Deploy automatically on push to main branch
 
 ### Manual Deployment
@@ -179,7 +179,7 @@ npm run build
 3. Run tests: `npm test`
 4. Commit changes with descriptive message
 5. Push to GitHub and create pull request
-6. Deploy automatically via Vercel
+6. Deploy automatically via Firebase
 
 ## Contributing
 

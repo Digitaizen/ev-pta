@@ -6,7 +6,7 @@ const Blog = () => {
       <div className="container">
         <div className="page-header">
           <h1>PTA News & Updates</h1>
-          <p className="page-subtitle">
+          <p className="page-description">
             Stay informed about East View PTA activities, events, and announcements
           </p>
         </div>

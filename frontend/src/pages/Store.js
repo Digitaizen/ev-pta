@@ -6,7 +6,7 @@ const Store = () => {
       <div className="container">
         <div className="page-header">
           <h1>PTA Store</h1>
-          <p className="page-subtitle">
+          <p className="page-description">
             Shop for East View PTA merchandise and support our programs
           </p>
         </div>

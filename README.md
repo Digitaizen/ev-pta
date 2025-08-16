@@ -8,7 +8,7 @@ A modern, minimalist website for the East View High School PTA in Georgetown, Te
 - **Backend**: Node.js with Express.js
 - **Database**: MongoDB
 - **Payment Processing**: Stripe & PayPal APIs
-- **Hosting**: Vercel
+- **Hosting**: Firebase
 - **Calendar**: Google Calendar Integration
 
 ## Features
@@ -77,7 +77,7 @@ ev-pta/
 
 ## Deployment
 
-The application is configured for deployment on Vercel with automatic CI/CD from Git.
+The application is configured for deployment on Firebase with automatic CI/CD from Git.
 
 ## Contributing
 

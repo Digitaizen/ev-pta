@@ -135,20 +135,20 @@
 
 .social-links {
   display: flex;
+  flex-direction: column;
   gap: var(--spacing-md);
 }
 
 .social-link {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
   background: rgba(255, 255, 255, 0.1);
   color: var(--white);
-  border-radius: 50%;
+  border-radius: var(--border-radius-md);
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: all var(--transition-fast);
 }
 
@@ -156,6 +156,11 @@
   background: var(--secondary-color);
   color: var(--primary-color);
   transform: translateY(-2px);
+}
+
+.social-text {
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 /* Newsletter */

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaCalendarAlt, FaUsers, FaHeart, FaGraduationCap } from 'react-icons/fa';
-import UpcomingEvents from '../components/UpcomingEvents';
+import CalendarEventsList from '../components/CalendarEventsList';
 
 const Home = () => {
   return (
@@ -18,9 +18,9 @@ const Home = () => {
                 Supporting our students, teachers, and community in Georgetown, Texas
               </p>
               <div className="hero-buttons">
-                <Link to="/membership" className="btn btn-primary">
+                <a href="https://www.joinpta.org/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                   Join Our PTA
-                </Link>
+                </a>
                 <Link to="/volunteers" className="btn btn-secondary">
                   Volunteer Today
                 </Link>
@@ -115,10 +115,10 @@ const Home = () => {
                   </div>
                   <div className="card-body">
                     <div className="quick-actions">
-                      <Link to="/membership" className="quick-action-btn">
+                      <a href="https://www.joinpta.org/" target="_blank" rel="noopener noreferrer" className="quick-action-btn">
                         <FaUsers />
                         Join PTA
-                      </Link>
+                      </a>
                       <Link to="/volunteers" className="quick-action-btn">
                         <FaHeart />
                         Volunteer
@@ -161,7 +161,7 @@ const Home = () => {
       <section className="calendar-section">
         <div className="container">
           <h2 className="text-center mb-4">Upcoming Events</h2>
-          <UpcomingEvents limit={3} showViewAll={true} />
+          <CalendarEventsList limit={3} showViewAll={true} />
         </div>
       </section>
 

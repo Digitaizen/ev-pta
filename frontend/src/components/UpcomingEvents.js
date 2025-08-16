@@ -14,17 +14,43 @@ const UpcomingEvents = ({ limit = 3, showViewAll = true }) => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/calendar/events?days=30`);
-      const data = await response.json();
-      
-      if (data.success) {
-        setEvents(data.events);
-      } else {
-        setError('Failed to fetch calendar events');
+
+      // Fetch directly from Google Calendar API
+      try {
+        const calendarId = 'ptaeastview@gmail.com';
+        const apiKey = process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY;
+
+        if (apiKey) {
+          const timeMin = new Date().toISOString();
+          const timeMax = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
+
+          const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?key=${apiKey}&timeMin=${timeMin}&timeMax=${timeMax}&singleEvents=true&orderBy=startTime`;
+
+          const response = await fetch(url);
+          const data = await response.json();
+
+          if (data.items) {
+            const formattedEvents = data.items.map(event => ({
+              id: event.id,
+              title: event.summary,
+              description: event.description || '',
+              start: event.start.dateTime || event.start.date,
+              end: event.end.dateTime || event.end.date,
+              location: event.location || '',
+              htmlLink: event.htmlLink
+            }));
+
+            setEvents(formattedEvents);
+            return;
+          }
+        }
+      } catch (googleError) {
+        console.warn('Google Calendar direct API failed:', googleError);
       }
-    } catch (err) {
-      setError('Error connecting to calendar service');
-      console.error('Calendar fetch error:', err);
+
+      // If no real events found, show empty state instead of mock data
+      setEvents([]);
+
     } finally {
       setLoading(false);
     }

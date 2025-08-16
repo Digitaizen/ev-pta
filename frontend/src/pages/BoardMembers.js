@@ -6,7 +6,7 @@ const BoardMembers = () => {
       <div className="container">
         <div className="page-header">
           <h1>PTA Board Members</h1>
-          <p className="page-subtitle">
+          <p className="page-description">
             Meet the dedicated volunteers who lead our East View High School PTA
           </p>
         </div>
@@ -16,17 +16,17 @@ const BoardMembers = () => {
             <div className="member-photo">
               <img 
                 src="/images/board/placeholder.jpg" 
-                alt="Jane Doe" 
+                alt="Charlotte Carr" 
                 onError={(e) => {
                   e.target.style.display = 'none';
                 }}
               />
             </div>
             <div className="member-info">
-              <h3>Jane Doe</h3>
+              <h3>Charlotte Carr</h3>
               <h4>President</h4>
               <p>
-                Jane has been with the PTA for 5 years and is passionate about student success. 
+                Charlotte has been with the PTA for 5 years and is passionate about student success. 
                 She brings extensive experience in event planning and community outreach.
               </p>
               <a href="mailto:president@eastviewpta.org" className="contact-link">
@@ -39,17 +39,17 @@ const BoardMembers = () => {
             <div className="member-photo">
               <img 
                 src="/images/board/placeholder.jpg" 
-                alt="John Doe" 
+                alt="Schatzi Borgella" 
                 onError={(e) => {
                   e.target.style.display = 'none';
                 }}
               />
             </div>
             <div className="member-info">
-              <h3>John Doe</h3>
+              <h3>Schatzi Borgella</h3>
               <h4>Vice President</h4>
               <p>
-                John brings 10 years of volunteer experience to the board. He specializes in 
+                Schatzi brings 10 years of volunteer experience to the board. She specializes in 
                 fundraising and community partnerships.
               </p>
               <a href="mailto:vp@eastviewpta.org" className="contact-link">
@@ -62,17 +62,17 @@ const BoardMembers = () => {
             <div className="member-photo">
               <img 
                 src="/images/board/placeholder.jpg" 
-                alt="Jane Smith" 
+                alt="Ashley Barker" 
                 onError={(e) => {
                   e.target.style.display = 'none';
                 }}
               />
             </div>
             <div className="member-info">
-              <h3>Joahn Smith</h3>
+              <h3>Ashley Barker</h3>
               <h4>Secretary</h4>
               <p>
-                Joahn manages all PTA communications and meeting minutes. She has a background 
+                Ashley manages all PTA communications and meeting minutes. She has a background 
                 in education and parent advocacy.
               </p>
               <a href="mailto:secretary@eastviewpta.org" className="contact-link">
@@ -85,18 +85,18 @@ const BoardMembers = () => {
             <div className="member-photo">
               <img 
                 src="/images/board/placeholder.jpg" 
-                alt="John Smith" 
+                alt="Amber Rainey" 
                 onError={(e) => {
                   e.target.style.display = 'none';
                 }}
               />
             </div>
             <div className="member-info">
-              <h3>John Smith</h3>
+              <h3>Amber Rainey</h3>
               <h4>Treasurer</h4>
               <p>
-                John oversees all financial aspects of the PTA. With his accounting background, 
-                he ensures transparency and fiscal responsibility.
+                Amber oversees all financial aspects of the PTA. With her accounting background, 
+                she ensures transparency and fiscal responsibility.
               </p>
               <a href="mailto:treasurer@eastviewpta.org" className="contact-link">
                 treasurer@eastviewpta.org

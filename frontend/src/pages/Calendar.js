@@ -15,7 +15,7 @@ const CalendarPage = () => {
         <div className="container">
           <h1>PTA Calendar</h1>
           <p className="page-description">
-            Stay up-to-date with all PTA events, meetings, and school activities. 
+            Stay up-to-date with all PTA events, meetings, and school activities.
             Mark your calendars and join us in supporting our East View community!
           </p>
         </div>
@@ -24,7 +24,24 @@ const CalendarPage = () => {
       <div className="page-content">
         <div className="container">
           <Calendar />
-          
+
+          <div className="full-calendar-section">
+            <h2>Full Calendar View</h2>
+            <div className="calendar-embed">
+              <iframe
+                src={`https://calendar.google.com/calendar/embed?src=${encodeURIComponent(process.env.REACT_APP_GOOGLE_CALENDAR_ID || 'ptaeastview@gmail.com')}&ctz=America%2FChicago&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH&height=600&wkst=1&bgcolor=%23ffffff`}
+                style={{
+                  border: 0,
+                  width: '100%',
+                  height: '600px',
+                  frameBorder: 0,
+                  scrolling: 'no'
+                }}
+                title="East View PTA Calendar"
+              ></iframe>
+            </div>
+          </div>
+
           <div className="calendar-info">
             <div className="info-section">
               <h3>How to Stay Connected</h3>

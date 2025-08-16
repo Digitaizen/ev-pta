@@ -41,9 +41,9 @@ const Footer = () => {
             <h3 className="footer-title">Quick Links</h3>
             <ul className="footer-links">
               <li>
-                <Link to="/membership" className="footer-link">
+                <a href="https://www.joinpta.org/" target="_blank" rel="noopener noreferrer" className="footer-link">
                   Join PTA
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/volunteers" className="footer-link">
@@ -102,32 +102,35 @@ const Footer = () => {
             <h3 className="footer-title">Stay Connected</h3>
             <div className="social-section">
               <div className="social-links">
-                <a 
-                  href="https://www.facebook.com/profile.php?id=61578221830917" 
-                  target="_blank" 
+                <a
+                  href="https://www.facebook.com/profile.php?id=61578221830917"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
                   aria-label="Facebook"
                 >
                   <FaFacebook />
+                  <span className="social-text">Facebook</span>
                 </a>
-                {/* <a 
-                  href="https://twitter.com/eastviewpta" 
-                  target="_blank" 
+                {/* <a
+                  href="https://twitter.com/eastviewpta"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
                   aria-label="Twitter"
                 >
                   <FaTwitter />
+                  <span className="social-text">Twitter</span>
                 </a> */}
-                <a 
-                  href="https://www.instagram.com/ev_pta/profilecard/?igsh=dnAyNWp2dW95ajF4" 
-                  target="_blank" 
+                <a
+                  href="https://www.instagram.com/ev_pta/profilecard/?igsh=dnAyNWp2dW95ajF4"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
                   aria-label="Instagram"
                 >
                   <FaInstagram />
+                  <span className="social-text">Instagram</span>
                 </a>
               </div>
               <div className="newsletter-signup">

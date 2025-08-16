@@ -6,7 +6,7 @@ const CommunityPartners = () => {
       <div className="container">
         <div className="page-header">
           <h1>Community Partner Program</h1>
-          <p className="page-subtitle">
+          <p className="page-description">
             Building partnerships with local businesses to support our students
           </p>
         </div>
