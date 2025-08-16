@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaUser } from 'react-icons/fa';
 
 const BoardMembers = () => {
   return (
@@ -14,13 +15,17 @@ const BoardMembers = () => {
         <div className="board-grid">
           <div className="board-member-card">
             <div className="member-photo">
-              <img 
-                src="/images/board/placeholder.jpg" 
-                alt="Charlotte Carr" 
+              <img
+                src="/images/board/placeholder.jpg"
+                alt="Charlotte Carr"
                 onError={(e) => {
                   e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'flex';
                 }}
               />
+              <div className="photo-placeholder" style={{display: 'none'}}>
+                <FaUser />
+              </div>
             </div>
             <div className="member-info">
               <h3>Charlotte Carr</h3>
@@ -37,13 +42,17 @@ const BoardMembers = () => {
 
           <div className="board-member-card">
             <div className="member-photo">
-              <img 
-                src="/images/board/placeholder.jpg" 
-                alt="Schatzi Borgella" 
+              <img
+                src="/images/board/placeholder.jpg"
+                alt="Schatzi Borgella"
                 onError={(e) => {
                   e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'flex';
                 }}
               />
+              <div className="photo-placeholder" style={{display: 'none'}}>
+                <FaUser />
+              </div>
             </div>
             <div className="member-info">
               <h3>Schatzi Borgella</h3>
@@ -60,13 +69,17 @@ const BoardMembers = () => {
 
           <div className="board-member-card">
             <div className="member-photo">
-              <img 
-                src="/images/board/placeholder.jpg" 
-                alt="Ashley Barker" 
+              <img
+                src="/images/board/placeholder.jpg"
+                alt="Ashley Barker"
                 onError={(e) => {
                   e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'flex';
                 }}
               />
+              <div className="photo-placeholder" style={{display: 'none'}}>
+                <FaUser />
+              </div>
             </div>
             <div className="member-info">
               <h3>Ashley Barker</h3>
@@ -83,13 +96,17 @@ const BoardMembers = () => {
 
           <div className="board-member-card">
             <div className="member-photo">
-              <img 
-                src="/images/board/placeholder.jpg" 
-                alt="Amber Rainey" 
+              <img
+                src="/images/board/placeholder.jpg"
+                alt="Amber Rainey"
                 onError={(e) => {
                   e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'flex';
                 }}
               />
+              <div className="photo-placeholder" style={{display: 'none'}}>
+                <FaUser />
+              </div>
             </div>
             <div className="member-info">
               <h3>Amber Rainey</h3>

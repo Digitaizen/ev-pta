@@ -22,7 +22,6 @@ class GoogleCalendarService {
         version: 'v3',
         auth: apiKey
       });
-      console.log('Google Calendar service initialized successfully with API key');
     } catch (error) {
       console.error('Failed to initialize Google Calendar service:', error);
       // Don't throw error, just log it so the app can still function
@@ -57,13 +56,9 @@ class GoogleCalendarService {
         orderBy
       });
 
-      console.log('Calendar API response:', response.data.items?.length || 0, 'events found');
       return response.data.items || [];
     } catch (error) {
       console.error('Error fetching calendar events:', error.message);
-      console.error('Error details:', error);
-      console.error('Calendar ID used:', this.calendarId);
-      console.error('API Key configured:', !!process.env.GOOGLE_CALENDAR_API_KEY);
 
       // More specific error handling
       if (error.code === 404) {

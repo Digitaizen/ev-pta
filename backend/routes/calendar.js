@@ -28,12 +28,7 @@ router.get('/events', validateDateRange, async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    console.log('Calendar API request received');
-    console.log('Environment check:', {
-      hasApiKey: !!process.env.GOOGLE_CALENDAR_API_KEY,
-      calendarId: process.env.GOOGLE_CALENDAR_ID,
-      nodeEnv: process.env.NODE_ENV
-    });
+
 
     const { startDate, endDate, days } = req.query;
     let events;

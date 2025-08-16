@@ -35,7 +35,6 @@ const Header = () => {
                   alt="East View High School PTA"
                   className="school-logo"
                   onError={(e) => {
-                    console.log('Logo failed to load:', e.target.src);
                     e.target.style.display = 'none';
                   }}
                 />

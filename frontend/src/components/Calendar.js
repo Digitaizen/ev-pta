@@ -15,14 +15,11 @@ const Calendar = () => {
     try {
       setLoading(true);
       setError(null);
-      console.log('Starting to fetch calendar events...');
 
       // Fetch directly from Google Calendar API
       try {
         const calendarId = process.env.REACT_APP_GOOGLE_CALENDAR_ID || 'ptaeastview@gmail.com';
         const apiKey = process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY;
-        console.log('Trying Google Calendar API with key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'Missing');
-        console.log('Calendar ID:', calendarId);
 
         if (apiKey) {
           // Use Google Calendar API directly from frontend for public calendars
@@ -31,11 +28,11 @@ const Calendar = () => {
           const timeMax = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(); // 90 days from now
 
           const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?key=${apiKey}&timeMin=${timeMin}&timeMax=${timeMax}&singleEvents=true&orderBy=startTime&maxResults=50`;
-          console.log('Google Calendar API URL (without key):', url.replace(apiKey, 'API_KEY_HIDDEN'));
+          // console.log('Google Calendar API URL (without key):', url.replace(apiKey, 'API_KEY_HIDDEN'));
 
           const response = await fetch(url);
-          console.log('Google Calendar response status:', response.status);
-          console.log('Google Calendar response headers:', Object.fromEntries(response.headers.entries()));
+          // console.log('Google Calendar response status:', response.status);
+          // console.log('Google Calendar response headers:', Object.fromEntries(response.headers.entries()));
 
           if (!response.ok) {
             const errorText = await response.text();
@@ -56,7 +53,6 @@ const Calendar = () => {
           }
 
           const data = await response.json();
-          console.log('Google Calendar response data:', data);
 
           if (data.items) {
             const formattedEvents = data.items.map(event => ({
@@ -69,26 +65,17 @@ const Calendar = () => {
               htmlLink: event.htmlLink
             }));
 
-            console.log('Successfully loaded events from Google Calendar:', formattedEvents.length);
             setEvents(formattedEvents);
             return;
-          } else {
-            console.log('Google Calendar returned no events in the specified time range');
-            console.log('Time range:', { timeMin, timeMax });
           }
         } else {
           console.warn('Google Calendar API key not found in environment variables');
         }
       } catch (googleError) {
         console.error('Google Calendar direct API failed:', googleError);
-        console.error('Error details:', {
-          message: googleError.message,
-          stack: googleError.stack
-        });
       }
 
       // If we get here, no events were found
-      console.warn('No calendar events found from Google Calendar API');
       setEvents([]);
 
     } catch (err) {

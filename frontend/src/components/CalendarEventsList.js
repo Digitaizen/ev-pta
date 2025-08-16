@@ -43,7 +43,6 @@ const CalendarEventsList = ({ limit = 5, showViewAll = false }) => {
       const data = await response.json();
       setEvents(data.items || []);
     } catch (err) {
-      console.error('Error fetching calendar events:', err);
       setError('Failed to load calendar events');
     } finally {
       setLoading(false);

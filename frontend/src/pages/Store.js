@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaShoppingBag } from 'react-icons/fa';
 
 const Store = () => {
   return (
@@ -14,13 +15,17 @@ const Store = () => {
         <div className="store-grid">
           <div className="product-card">
             <div className="product-image">
-              <img 
-                src="/images/store/pta-tshirt.jpg" 
-                alt="East View PTA T-Shirt" 
+              <img
+                src="/images/store/pta-tshirt.jpg"
+                alt="East View PTA T-Shirt"
                 onError={(e) => {
                   e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'flex';
                 }}
               />
+              <div className="product-placeholder" style={{display: 'none'}}>
+                <FaShoppingBag />
+              </div>
             </div>
             <div className="product-info">
               <h3>East View PTA T-Shirt</h3>
@@ -32,13 +37,17 @@ const Store = () => {
 
           <div className="product-card">
             <div className="product-image">
-              <img 
-                src="/images/store/spirit-mug.jpg" 
-                alt="School Spirit Mug" 
+              <img
+                src="/images/store/spirit-mug.jpg"
+                alt="School Spirit Mug"
                 onError={(e) => {
                   e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'flex';
                 }}
               />
+              <div className="product-placeholder" style={{display: 'none'}}>
+                <FaShoppingBag />
+              </div>
             </div>
             <div className="product-info">
               <h3>School Spirit Mug</h3>
@@ -50,13 +59,17 @@ const Store = () => {
 
           <div className="product-card">
             <div className="product-image">
-              <img 
-                src="/images/store/car-decal.jpg" 
-                alt="Car Decal" 
+              <img
+                src="/images/store/car-decal.jpg"
+                alt="Car Decal"
                 onError={(e) => {
                   e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'flex';
                 }}
               />
+              <div className="product-placeholder" style={{display: 'none'}}>
+                <FaShoppingBag />
+              </div>
             </div>
             <div className="product-info">
               <h3>East View Car Decal</h3>
